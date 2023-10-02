@@ -45,7 +45,7 @@ class NewExpenseModal extends Component {
           {button}
         </ErrorBoundary>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Expense form</ModalHeader>
+          <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
 
           <ModalBody>
             <NewExpenseForm

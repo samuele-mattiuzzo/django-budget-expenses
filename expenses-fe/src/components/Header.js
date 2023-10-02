@@ -5,16 +5,11 @@ class Header extends Component {
     return (
       <div className="text-center">
         <img
-          src="../logo.svg"
-          width="300"
-          className="img-thumbnail"
+          src={process.env.PUBLIC_URL + 'logo192.png'}
+          width="50"
           style={{ marginTop: "20px" }}
           alt="Samuele Mattiuzzo"
         />
-        <hr />
-        <h5>
-          <i>presents</i>
-        </h5>
         <h1>Expenses</h1>
       </div>
     );
