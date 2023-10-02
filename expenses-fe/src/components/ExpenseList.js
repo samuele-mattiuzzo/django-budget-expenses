@@ -31,7 +31,7 @@ class ExpenseList extends Component {
                 <td>{expense.total}</td>
                 <td>{expense.category}</td>
                 <td align="center">
-                {/* Not working
+
                   <NewExpenseModal
                     create={false}
                     expense={expense}
@@ -42,7 +42,7 @@ class ExpenseList extends Component {
                     pk={expense.pk}
                     resetState={this.props.resetState}
                   />
-                */}
+                
                 </td>
               </tr>
             ))

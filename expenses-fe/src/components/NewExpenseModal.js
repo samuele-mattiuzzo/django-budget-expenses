@@ -10,6 +10,8 @@ class NewExpenseModal extends Component {
     this.state = {
       modal: false
     };
+
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle = () => {
@@ -19,10 +21,28 @@ class NewExpenseModal extends Component {
   };
 
   render() {
+    const create = this.props.create;
+
+    var title = "Editing Expense";
+    var button = <Button onClick={this.toggle}>Edit</Button>;
+    if (create) {
+      title = "Creating New Expense";
+
+      button = (
+        <Button
+          color="primary"
+          className="float-right"
+          onClick={this.toggle}
+          style={{ minWidth: "200px" }}
+        >
+          Create New
+        </Button>
+      );
+    }
     return (
       <Fragment>
         <ErrorBoundary>
-          <Button onClick={this.toggle}>Submit</Button>
+          {button}
         </ErrorBoundary>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Expense form</ModalHeader>
