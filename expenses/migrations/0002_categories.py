@@ -4,8 +4,17 @@ from django.db import migrations
 
 
 def create_data(apps, schema_editor):
-    Category = apps.get_model('expenses', 'Category')
-    DEFAULT_CATEGORIES = ["rent", "bills", "groceries", "tobacco", "eating out", "transport", "gifts", "extras"]
+    Category = apps.get_model("expenses", "Category")
+    DEFAULT_CATEGORIES = [
+        "rent",
+        "bills",
+        "groceries",
+        "tobacco",
+        "eating out",
+        "transport",
+        "gifts",
+        "extras",
+    ]
 
     for cat in DEFAULT_CATEGORIES:
         Category(name=cat).save()
