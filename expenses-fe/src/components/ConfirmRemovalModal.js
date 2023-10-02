@@ -6,9 +6,12 @@ import axios from "axios";
 import { API_URL } from "../constants";
 
 class ConfirmRemovalModal extends Component {
-  state = {
-    modal: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+  }
 
   toggle = () => {
     this.setState(previous => ({
@@ -26,7 +29,7 @@ class ConfirmRemovalModal extends Component {
   render() {
     return (
       <Fragment>
-        <Button color="danger" onClick={() => this.toggle()}>
+        <Button type="button" color="danger" onClick={() => this.toggle()}>
           Remove
         </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>

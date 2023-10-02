@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
+
 import NewExpenseModal from "./NewExpenseModal";
 
 import ConfirmRemovalModal from "./ConfirmRemovalModal";
 
 class ExpenseList extends Component {
   render() {
-    const expenses = this.props.expenses;
     return (
       <Table dark>
         <thead>
@@ -18,19 +18,20 @@ class ExpenseList extends Component {
           </tr>
         </thead>
         <tbody>
-          {!expenses || expenses.length <= 0 ? (
+          {!this.props.expenses || this.props.expenses.length <= 0 ? (
             <tr>
               <td colSpan="6" align="center">
                 <b>Ops, no one here yet</b>
               </td>
             </tr>
           ) : (
-            expenses.map(expense => (
+            this.props.expenses.map(expense => (
               <tr key={expense.pk}>
                 <td>{expense.date}</td>
                 <td>{expense.total}</td>
                 <td>{expense.category}</td>
                 <td align="center">
+                {/* Not working
                   <NewExpenseModal
                     create={false}
                     expense={expense}
@@ -41,6 +42,7 @@ class ExpenseList extends Component {
                     pk={expense.pk}
                     resetState={this.props.resetState}
                   />
+                */}
                 </td>
               </tr>
             ))

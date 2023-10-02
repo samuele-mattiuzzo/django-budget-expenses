@@ -6,19 +6,23 @@ import axios from "axios";
 import { API_URL } from "../constants";
 
 class NewExpenseForm extends React.Component {
-  state = {
-    pk: 0,
-    total: "",
-    category: "",
-    date: ""
-  };
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      pk: 0,
+      date: "",
+      total: "",
+      category: ""
+    };
+  }
 
   componentDidMount() {
     if (this.props.expense) {
       const { pk, date, total, category } = this.props.expense;
       this.setState({ pk, date, total, category });
     }
-  }
+  };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });

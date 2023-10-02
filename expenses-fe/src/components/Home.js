@@ -8,9 +8,13 @@ import axios from "axios";
 import { API_URL } from "../constants";
 
 class Home extends Component {
-  state = {
-    expenses: []
-  };
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      expenses: []
+    };
+  }
 
   componentDidMount() {
     this.resetState();
@@ -35,6 +39,7 @@ class Home extends Component {
             />
           </Col>
         </Row>
+
         <Row>
           <Col>
             <NewExpenseModal create={true} resetState={this.resetState} />

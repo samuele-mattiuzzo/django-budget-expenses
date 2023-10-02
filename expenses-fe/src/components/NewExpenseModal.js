@@ -1,43 +1,31 @@
 import React, { Component, Fragment } from "react";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import NewExpenseForm from "./NewExpenseForm";
+import ErrorBoundary from "./ErrorBoundary";
 
 class NewExpenseModal extends Component {
-  state = {
-    modal: false
-  };
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+  }
 
   toggle = () => {
-    this.setState(previous => ({
-      modal: !previous.modal
-    }));
+    this.setState({
+      modal: !this.state.modal
+    });
   };
 
   render() {
-    const create = this.props.create;
-
-    var title = "Editing Expense";
-    var button = <Button onClick={this.toggle}>Edit</Button>;
-    if (create) {
-      title = "Creating New Expense";
-
-      button = (
-        <Button
-          color="primary"
-          className="float-right"
-          onClick={this.toggle}
-          style={{ minWidth: "200px" }}
-        >
-          Create New
-        </Button>
-      );
-    }
-
     return (
       <Fragment>
-        {button}
+        <ErrorBoundary>
+          <Button onClick={this.toggle}>Submit</Button>
+        </ErrorBoundary>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>{title}</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Expense form</ModalHeader>
 
           <ModalBody>
             <NewExpenseForm

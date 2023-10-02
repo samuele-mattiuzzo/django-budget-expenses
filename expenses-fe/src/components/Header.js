@@ -5,11 +5,11 @@ class Header extends Component {
     return (
       <div className="text-center">
         <img
-          src="https://logrocket-assets.io/img/logo.png"
+          src="../logo.svg"
           width="300"
           className="img-thumbnail"
           style={{ marginTop: "20px" }}
-          alt="Logo"
+          alt="Samuele Mattiuzzo"
         />
         <hr />
         <h5>
