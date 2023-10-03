@@ -20,3 +20,8 @@ class ExpenseSerializer(serializers.ModelSerializer):
             "total",
             "category",
         )
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret["category"] = instance.category.name
+        return ret
