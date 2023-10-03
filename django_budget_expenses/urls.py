@@ -7,4 +7,5 @@ urlpatterns = [
     re_path(r"^api/expenses/$", views.expenses),
     re_path(r"^api/expenses/([0-9])$", views.expenses_detail),
     re_path(r"^api/categories/$", views.categories),
+    re_path(r"^api/stats/$", views.expenses_stats),
 ]

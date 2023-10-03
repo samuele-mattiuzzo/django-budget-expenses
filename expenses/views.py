@@ -1,3 +1,5 @@
+from django.db.models import Sum
+
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -53,3 +55,13 @@ def expenses_detail(request, pk):
     elif request.method == "DELETE":
         expense.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["GET"])
+def expenses_stats(request):
+    aggregated_data = (
+        Expense.objects.values("category__name")
+        .order_by("-total")
+        .annotate(total=Sum("total"))
+    )
+    return Response(aggregated_data)
