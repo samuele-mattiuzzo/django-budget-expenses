@@ -33,7 +33,9 @@ class Home extends Component {
     return (
       <Container style={{ marginTop: "20px" }}>
         <Row>
-          <Stats />
+          <Col>
+            <NewExpenseModal create={true} resetState={this.resetState} />
+          </Col>
         </Row>
         <Row>
           <Col>
@@ -42,11 +44,8 @@ class Home extends Component {
               resetState={this.resetState}
             />
           </Col>
-        </Row>
-
-        <Row>
           <Col>
-            <NewExpenseModal create={true} resetState={this.resetState} />
+            <Stats />
           </Col>
         </Row>
       </Container>

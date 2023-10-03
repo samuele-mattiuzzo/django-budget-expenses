@@ -61,7 +61,7 @@ def expenses_detail(request, pk):
 def expenses_stats(request):
     aggregated_data = (
         Expense.objects.values("category__name")
-        .order_by("-total")
-        .annotate(total=Sum("total"))
+        .order_by("category__name")
+        .annotate(value=Sum("total"))
     )
     return Response(aggregated_data)
