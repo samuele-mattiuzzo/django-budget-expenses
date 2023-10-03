@@ -29,6 +29,10 @@ class NewExpenseForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onChangeSelect = e => {
+    this.setState({ category: e.pk });
+  };
+
   createExpense = e => {
     e.preventDefault();
     axios.post(API_URL, this.state).then(() => {
@@ -86,6 +90,7 @@ class NewExpenseForm extends React.Component {
             getOptionLabel={(e) => e.name}
             getOptionValue={(e) => e.pk}
             loadOptions={this.loadOptions}
+            onChange={this.onChangeSelect}
           />
         </FormGroup>
         <Button>Send</Button>
