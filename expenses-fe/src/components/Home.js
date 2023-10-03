@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
+import Stats from "./Stats";
 import ExpenseList from "./ExpenseList";
 import NewExpenseModal from "./NewExpenseModal";
 
@@ -31,6 +32,9 @@ class Home extends Component {
   render() {
     return (
       <Container style={{ marginTop: "20px" }}>
+        <Row>
+          <Stats />
+        </Row>
         <Row>
           <Col>
             <ExpenseList
