@@ -37,6 +37,7 @@ class Home extends Component {
             <NewExpenseModal create={true} resetState={this.resetState} />
           </Col>
         </Row>
+        <hr/>
         <Row>
           <Col>
             <ExpenseList

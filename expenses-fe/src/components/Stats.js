@@ -41,7 +41,7 @@ class Stats extends Component {
         viewBoxSize={[150, 250]}
         data={this.state.data}
         label={({ dataEntry }) => dataEntry.category__name}
-        lineWidth={100}
+        labelStyle={{fontSize: 6.5}}
       />
     );
   }
