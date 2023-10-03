@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import AsyncSelect from 'react-select/async'
 
 import axios from "axios";
 
-import { API_URL } from "../constants";
+import { API_URL, CATEGORIES_URL } from "../constants";
 
 class NewExpenseForm extends React.Component {
   
@@ -44,6 +45,12 @@ class NewExpenseForm extends React.Component {
     });
   };
 
+  loadOptions = async () => {
+    const res = await fetch(CATEGORIES_URL);
+    const data = await res.json();
+    return data;
+  }
+
   defaultIfEmpty = value => {
     return value === "" ? "" : value;
   };
@@ -54,7 +61,7 @@ class NewExpenseForm extends React.Component {
         <FormGroup>
           <Label for="date">Date:</Label>
           <Input
-            type="text"
+            type="date"
             name="date"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.date)}
@@ -63,19 +70,22 @@ class NewExpenseForm extends React.Component {
         <FormGroup>
           <Label for="total">Total:</Label>
           <Input
-            type="text"
+            type="number"
             name="total"
             onChange={this.onChange}
             value={this.defaultIfEmpty(this.state.total)}
           />
         </FormGroup>
+
         <FormGroup>
           <Label for="category">Category:</Label>
-          <Input
-            type="text"
+          <AsyncSelect
             name="category"
-            onChange={this.onChange}
-            value={this.defaultIfEmpty(this.state.category)}
+            cacheOptions
+            defaultOptions
+            getOptionLabel={(e) => e.name}
+            getOptionValue={(e) => e.pk}
+            loadOptions={this.loadOptions}
           />
         </FormGroup>
         <Button>Send</Button>

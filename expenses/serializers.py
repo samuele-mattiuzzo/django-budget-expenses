@@ -5,7 +5,10 @@ from .models import Expense, Category
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ("name",)
+        fields = (
+            "pk",
+            "name",
+        )
 
 
 class ExpenseSerializer(serializers.ModelSerializer):
