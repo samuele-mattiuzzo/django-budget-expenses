@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "reactstrap";
 
-import NewExpenseModal from "./NewExpenseModal";
-
-import ConfirmRemovalModal from "./ConfirmRemovalModal";
-
 class ExpenseList extends Component {
   render() {
     return (
@@ -14,7 +10,6 @@ class ExpenseList extends Component {
             <th>Date</th>
             <th>Total</th>
             <th>Category</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -30,20 +25,6 @@ class ExpenseList extends Component {
                 <td>{expense.date}</td>
                 <td>{expense.total}</td>
                 <td>{expense.category}</td>
-                <td align="center">
-
-                  <NewExpenseModal
-                    create={false}
-                    expense={expense}
-                    resetState={this.props.resetState}
-                  />
-                  &nbsp;&nbsp;
-                  <ConfirmRemovalModal
-                    pk={expense.pk}
-                    resetState={this.props.resetState}
-                  />
-                
-                </td>
               </tr>
             ))
           )}
