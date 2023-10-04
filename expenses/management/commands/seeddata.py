@@ -23,8 +23,8 @@ class Command(BaseCommand):
         return random.choice(self.categories)
 
     def _random_total(self):
-        return round(random.uniform(
-            self.TOTAL_RANGE[0], self.TOTAL_RANGE[1]), self.TOTAL_DECIMAL
+        return round(
+            random.uniform(self.TOTAL_RANGE[0], self.TOTAL_RANGE[1]), self.TOTAL_DECIMAL
         )
 
     def _random_date(self):
